@@ -150,7 +150,7 @@ function StartQuizOnPage()
 		}
 		if (IsLastPage())
 		{
-			$('#idLinkNext').text('Completa');
+			$('#idLinkNext').text('Finish');
 		}
 	}
 	StorePage();
@@ -529,7 +529,7 @@ function PostSession(question, questionIndex)
 					return;
 				}
 				else {
-					ShowSnackbarError('Errore nel salvataggio sessione');
+					ShowSnackbarError('Error while saving the session');
 				}
 			}
 		});
@@ -567,10 +567,10 @@ function SaveQuizPartial()
 			Authorization: 'Bearer ' + quiz.currentUser.authToken
 		},
 		success: function (data) {
-			ShowSnackbarSuccess('Quiz salvato correttamente');
+			ShowSnackbarSuccess('Quiz saved correctly');
 		},
 		error: function (jqXHR, exception) {
-			ShowSnackbarError('Errore nel salvataggio sessione');
+			ShowSnackbarError('Error while saving the session');
 		},
 		complete: function (xhr, textStatus) {
 		}

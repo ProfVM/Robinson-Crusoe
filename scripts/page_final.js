@@ -27,9 +27,9 @@ $(window).on("beforeunload", function () {
 
 function PrintHeader() {
 	if (quiz.isQuizCompleted) {
-		$('#idHeaderLastPage').text('Quiz completato');
+		$('#idHeaderLastPage').text('Quiz completed');
 	}
 	else if (quiz.isQuizAbandoned) {
-		$('#idHeaderLastPage').text('Quiz abbandonato');
+		$('#idHeaderLastPage').text('Quiz abandoned');
 	}
 }

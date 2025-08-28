@@ -219,11 +219,11 @@ function GetListOfSelectedAnswers(question)
 			if (msg !== '') msg += " ";
 			if (choice === 1)
 			{
-				msg += 'Vero';
+				msg += 'TRUE';
 			}
 			else if (choice === 0)
 			{
-				msg += 'Falso';
+				msg += 'FALSE';
 			}
 		}
 		else if (question.typeOfQuestion === QMAKE_FILLGAP) 

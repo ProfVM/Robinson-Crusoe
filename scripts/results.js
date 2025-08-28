@@ -40,7 +40,7 @@ function PageLoadResult()
 	{
 		if (options.needValuateQuiz && options.warnNeedRetake && options.allowRetakeQuiz && (quiz.mark <= options.upperMarkForRetake) && (quiz.numOfRetake < options.maxNumRetake))
 		{
-			PrintWarning("Devi ripetere il quiz in quanto il tuo voto è inferiore a " + options.upperMarkForRetake, 'R');
+			PrintWarning("You have to retake the quiz because the mark is less than " + options.upperMarkForRetake, 'R');
 		}
 
 		if (options.needSaveQuiz)
@@ -281,7 +281,7 @@ function PrintReportQuestionDetails(qstNum,question)
 
 	textHtml += "<div class='panel panel-primary qf-panel-question-class'>";
 
-	htmlHeader = "<div class='panel-heading qf-panel-question-heading-class'><b>Domanda " + textToDisplay + "</b></div>";
+	htmlHeader = "<div class='panel-heading qf-panel-question-heading-class'><b>question " + textToDisplay + "</b></div>";
 	textHtml += htmlHeader;
 
 	textHtml += "<div class='panel-body qf-panel-question-body-class'>";
@@ -293,35 +293,35 @@ function PrintReportQuestionDetails(qstNum,question)
 	}
 
 	if (question.valid === 1) {
-		resultMsg = "Risposta corretta";
+		resultMsg = "Correct answer";
 	}
 	else if (question.valid === -1) {
 		if (question.noChoice) {
-			resultMsg = "Domanda senza risposta";
+			resultMsg = "Question without answer";
 		}
 		else {
-			resultMsg = "Risposta errata";
+			resultMsg = "Wrong answer";
 		}
 	}
 	else if ((question.valid === 2) && !options.reportHideRowQstNotValuated) {
-		resultMsg = "Domanda non valutata";
+		resultMsg = "Question not valuated";
 	}
 	else if (question.valid === 3) {
 		if (question.nScore === question.maxScore) {
-			resultMsg = "Risposta corretta";
+			resultMsg = "Correct answer";
 		}
 		else if (question.nScore === question.minScore) {
-			resultMsg = "Risposta errata";
+			resultMsg = "Wrong answer";
 		}
 		else {
-			resultMsg = "Risposta parzialmente corretta";
+			resultMsg = "Partially correct answer";
 		}
 	}
 	textHtml += "<p class='revision-class'><i>" + resultMsg;
 
 	//if ((question.valid === -1) && (question.typeOfQuestion === QMAKE_MULTIANS))
 	//{
-	//	textHtml += ". La risposta corretta era " + GetListOfRightAnsLetters(question);
+	//	textHtml += ". The correct answer was " + GetListOfRightAnsLetters(question);
 	//}
 	textHtml += "</i></p>";
 
@@ -329,14 +329,14 @@ function PrintReportQuestionDetails(qstNum,question)
 	{
 		if (question.minScore === 0) {
 			if (question.typeOfQuestion === QMAKE_MATCHING) {
-				textHtml += "<p class='revision-class'><i>Affermazioni corrette : " + question.nScore + "/" + question.maxScore + "</i></p>";
+				textHtml += "<p class='revision-class'><i>Right sentences : " + question.nScore + "/" + question.maxScore + "</i></p>";
 			}
 			else {
-				textHtml += "<p class='revision-class'><i>Punteggio : " + question.nScore + "/" + question.maxScore + "</i></p>";
+				textHtml += "<p class='revision-class'><i>Score : " + question.nScore + "/" + question.maxScore + "</i></p>";
 			}
 		}
 		else {
-			textHtml += "<p class='revision-class'><i>Punteggio : " + question.nScore + " [" + question.minScore + " , " + question.maxScore + "]</i></p>";
+			textHtml += "<p class='revision-class'><i>Score : " + question.nScore + " [" + question.minScore + " , " + question.maxScore + "]</i></p>";
 		}
 	}
 
@@ -399,7 +399,7 @@ function PrintReportAnswerDetails(numOfAns, typeOfQuestion, answer)
 		}
 		else
 		{
-			htmlAns += "Risposta " + numOfAns;
+			htmlAns += "Answer " + numOfAns;
 		}
 		htmlAns += "</p>";
 
@@ -611,13 +611,13 @@ function PostLogout(id)
 
 function PostResultsSuccessCallback()
 {
-	PrintSuccess('Quiz salvato correttamente', 'R');
+	PrintSuccess('Quiz saved correctly', 'R');
 	deleteCookie("qmake.quiz");
 }
 
 //function PostResultsWarningCallback()
 //{
-//	PrintWarning('Risultato già acquisito. Questo invio verrà ignorato', 'R');
+//	PrintWarning('Results are already been sent. This transmission will be ignored', 'R');
 //	deleteCookie("qmake.quiz");
 //}
 
@@ -642,7 +642,7 @@ function PostResultsFailCallback(jqXHR, exception)
 		msg = 'Uncaught Error.' + jqXHR.responseText;
 	}
 
-	PrintError('Impossibile salvare i risultati del quiz : ' + msg, 'R');
+	PrintError('Unable to save quiz results : ' + msg, 'R');
 }
 
 function RemoveUndefinedQuestions() {
@@ -752,13 +752,13 @@ function PostLogin(email, passhash, domainId) {
 		},
 		error: function (xhr, textStatus, errorThrown) {
 			if (xhr.status === 401) {
-				PrintError('Utente non autorizzato', 'R');
+				PrintError('User unauthorized', 'R');
 			}
 			else if (xhr.status === 404) {
-				PrintError('Utente non trovato', 'R');
+				PrintError('User not found', 'R');
 			}
 			else {
-				PrintError('Errore di login : ' + xhr.status + " - " + errorThrown, 'R');
+				PrintError('Login error : ' + xhr.status + " - " + errorThrown, 'R');
 			}
 		},
 		complete: function (xhr, textStatus) {

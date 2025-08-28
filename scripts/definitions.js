@@ -43,7 +43,7 @@ const QMAKE_SEND_WEBAPP = 4;
 const QMAKE_SEND_NODEJS = 5;
 const QMAKE_SEND_NODEJS_LOCAL = 6;  
 
-const QUIZ_KEYWORD = "PvYPp1LkJ$8Jjx21";
+const QUIZ_KEYWORD = "nQ+1kbCeRfCeUMPA";
 
 const USER_LOGIN_ANONYMOUS = "Anonymous";
 const USER_EMAIL_ANONYMOUS = "anonymous@anonymous.nowhere";
@@ -70,7 +70,7 @@ const options =
 	questSlide: false,
 	lockRightAns: false,
 	computeMarkFnType: QMAKE_COMPUTE_MARK_BASIC,
-	randQuest: false,
+	randQuest: true,
 	allowChangeChoiceAlways: false,
 	verifyQuestBeforeNext: true,
 	verifyAtLeastOneChoice: false,
@@ -127,7 +127,7 @@ const options =
 	indicateOnlySelAns: false,
 	showUnansweredQuests: true,
 	htmlCharset: "Windows-1252",
-	htmlLanguage: "it",
+	htmlLanguage: "en",
 	reportHideRevision: false,
 	lockQuestionAfterConfirm: false,
 	showEngagementRules: false,

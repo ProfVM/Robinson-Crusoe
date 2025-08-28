@@ -31,7 +31,7 @@ function PageLoadIndex()
 			for (var i = 0; i < options.urlParamArray.length; i++) {
 				var urlParam = options.urlParamArray[i];
 				if (!searchParams.has(urlParam)) {
-					PrintWarning('Parametri mancanti per l&apos;autorizzazione al login', 'I');
+					PrintWarning('Missing parameter for login authorization', 'I');
 					break;
 				}
 			}
@@ -99,7 +99,7 @@ function onRegistration()
 
 	if ((!options.needSaveQuiz) || (options.saveQuizMode !== QMAKE_SEND_NODEJS && options.saveQuizMode !== QMAKE_SEND_NODEJS_LOCAL))
 	{
-		PrintError('Il quiz non è stato creato in modalità salvataggio su server', 'X');
+		PrintError('The quiz was not created with the enabled option : saving on server', 'X');
 		return;
 	}
 
@@ -152,15 +152,15 @@ function onRegistration()
 
 	if (email === "" || pwd === "" || missingMandatoryField)
 	{
-		PrintWarning('Tutti i campi con (*) sono obbligatori', 'X');
+		PrintWarning('All the fields with (*) are mandatory', 'X');
 	}
 	else if (!options.loginInsteadEmail && !ValidateEmail(email))
 	{
-		PrintWarning('Inserire un indirizzo email valido', 'X');
+		PrintWarning('Not a valid email address', 'X');
     }
 	else if (pwd !== pwd2)
 	{
-		PrintWarning('Le password non coicidono', 'X');
+		PrintWarning('Password mismatch', 'X');
 	}
 	else
 	{
@@ -185,7 +185,7 @@ function GetCheckLogin(loginKey, loginData)
 		data: { login: loginKey },
 		success: function (msg)
 		{
-			PrintError('Utente già registrato', 'X');
+			PrintError('User already registered', 'X');
 
 			$('html').removeClass("wait");
 			$('#registrationBtnId').prop("disabled", false);
@@ -218,7 +218,7 @@ function PostRegistration(loginData)
 			PrintRegistrationSuccess();
 		},
 		error: function (xhr, textStatus, errorThrown ) {
-			PrintError('Errore di registrazione : ' + xhr.status + (errorThrown ? (" - " + errorThrown) : ""), 'X');
+			PrintError('Registration error : ' + xhr.status + (errorThrown ? (" - " + errorThrown) : ""), 'X');
 		},
 		complete: function (xhr, textStatus) {
 			$('html').removeClass("wait");
@@ -233,7 +233,7 @@ function onLogin()
 	{
 		if ((!options.needSaveQuiz) || (options.saveQuizMode !== QMAKE_SEND_NODEJS && options.saveQuizMode !== QMAKE_SEND_NODEJS_LOCAL))
 		{
-			PrintError('Il quiz non è stato creato in modalità salvataggio su server', 'I');
+			PrintError('The quiz was not created with the enabled option : saving on server', 'I');
 			return;
 		}
 
@@ -260,7 +260,7 @@ function onLogin()
 		}
 		else
 		{
-			PrintError('Il campo nome non può essere vuoto', 'I');
+			PrintError('The field name cannot be empty', 'I');
 		}
 	}
 }
@@ -301,13 +301,13 @@ function PostLogin(email, passhash, domainId)
 			EnsureMessageBoxVisibility();
 
 			if (xhr.status === 401) {
-				PrintError('Utente non autorizzato', 'I');
+				PrintError('User unauthorized', 'I');
 			}
 			else if (xhr.status === 404) {
-				PrintError('Utente non trovato', 'I');
+				PrintError('User not found', 'I');
 			}
 			else  {
-				PrintError('Errore di login : ' + xhr.status + (errorThrown ? (' - ' + errorThrown) : ''), 'I');
+				PrintError('Login error : ' + xhr.status + (errorThrown ? (' - ' + errorThrown) : ''), 'I');
 			}
 
 			$('html').removeClass("wait");
@@ -348,7 +348,7 @@ function GetCheckQuiz(quizname, email, authToken)
 			}
 			else {
 				EnsureMessageBoxVisibility();
-				PrintWarning('Quiz già svolto', 'I');
+				PrintWarning('Quiz already taken', 'I');
 			}
 			//}
 		},
