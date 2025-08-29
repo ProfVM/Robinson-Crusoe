@@ -43,7 +43,7 @@ const QMAKE_SEND_WEBAPP = 4;
 const QMAKE_SEND_NODEJS = 5;
 const QMAKE_SEND_NODEJS_LOCAL = 6;  
 
-const QUIZ_KEYWORD = "nQ+1kbCeRfCeUMPA";
+const QUIZ_KEYWORD = "7AwWoIK#o087U1l9";
 
 const USER_LOGIN_ANONYMOUS = "Anonymous";
 const USER_EMAIL_ANONYMOUS = "anonymous@anonymous.nowhere";
